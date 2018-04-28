@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 
-/**
- * Generated class for the AddEventPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-add-event',
@@ -35,8 +28,8 @@ export class AddEventPage {
                               new Date(this.event.endDate)).then(
       msg => {
         let alert = this.alertCtrl.create({
-          title: 'Success!',
-          subTitle: 'Event saved successfully',
+          title: 'Sucesso!',
+          subTitle: 'Evento salvo com sucesso.',
           buttons: ['OK']
         });
         alert.present();
@@ -44,8 +37,8 @@ export class AddEventPage {
       },
       err => {
         let alert = this.alertCtrl.create({
-          title: 'Fail',
-          subTitle: err,
+          title: 'Falha!',
+          subTitle: 'Enfrentamos um problema aqui. Entre em contato com o desenvolvedor e informe o problema. '+err,
           buttons: ['OK']
         });
         alert.present();
