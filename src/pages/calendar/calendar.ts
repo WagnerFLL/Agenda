@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AddEventPage } from '../add-event/add-event';
 import { Calendar } from '@ionic-native/calendar';
+import { Storage } from '@ionic/storage';
+import { EventT } from '../../models/event';
 
 @IonicPage()
 @Component({
@@ -9,7 +11,8 @@ import { Calendar } from '@ionic-native/calendar';
   templateUrl: 'calendar.html',
 })
 export class CalendarPage {
-
+  
+  public eventList: EventT[];
   date: any;
   daysInThisMonth: any;
   daysInLastMonth: any;
@@ -21,13 +24,10 @@ export class CalendarPage {
   ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
   'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 
-  eventList: any[];
-  selectedEvent: any;
-  isSelected: any;
-
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public calendar: Calendar,
+    public storage: Storage,
     public alertCtrl: AlertController) {
     this.date = new Date();
   }
@@ -35,6 +35,22 @@ export class CalendarPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CalendarPage');
     this.getDaysOfMonth();
+  }
+
+  ionViewDidEnter(){
+    this.storage.get("eventList").then(
+      success => {
+        this.eventList = success;
+        console.log(this.eventList);
+      },
+      err => {
+          let alert = this.alertCtrl.create({
+          title: 'Falha!',
+          subTitle: 'Enfrentamos um problema aqui. Entre em contato com o desenvolvedor e informe o problema. '+err,
+          buttons: ['OK']
+        }).present();
+      }
+    );
   }
 
   getDaysOfMonth() {
@@ -87,70 +103,14 @@ export class CalendarPage {
   }
 
   addEvent() {
-    this.navCtrl.push(AddEventPage);
+    this.navCtrl.push(AddEventPage, {info: 0, event: {title: null, message: "", startDate: null, endDate: null, location: null}});
   }
 
-  loadEventThisMonth() {
-    this.eventList = new Array();
-    var startDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
-    var endDate = new Date(this.date.getFullYear(), this.date.getMonth()+1, 0);
-    this.calendar.listEventsInRange(startDate, endDate).then(
-      (msg) => {
-        msg.forEach(item => {
-          this.eventList.push(item);
-        });
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+  editEvent(event: EventT){
+    this.navCtrl.push(AddEventPage,{info: 1, event: event});
   }
-
-  checkEvent(day) {
-    var hasEvent = false;
-    var thisDate1 = this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+day+" 00:00:00";
-    var thisDate2 = this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+day+" 23:59:59";
-    this.eventList.forEach(event => {
-      if(((event.startDate >= thisDate1) && (event.startDate <= thisDate2)) || ((event.endDate >= thisDate1) && (event.endDate <= thisDate2))) {
-        hasEvent = true;
-      }
-    });
-    return hasEvent;
-  }
-
-  selectDate(day) {
-    this.isSelected = false;
-    this.selectedEvent = new Array();
-    var thisDate1 = this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+day+" 00:00:00";
-    var thisDate2 = this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+day+" 23:59:59";
-    this.eventList.forEach(event => {
-      if(((event.startDate >= thisDate1) && (event.startDate <= thisDate2)) || ((event.endDate >= thisDate1) && (event.endDate <= thisDate2))) {
-        this.isSelected = true;
-        this.selectedEvent.push(event);
-      }
-    });
-  }
-
-  deleteEvent(evt) {
-    let alert = this.alertCtrl.create({
-      title: 'Confirm Delete',
-      message: 'Are you sure want to delete this event?',
-      buttons: [
-        { text: 'Cancel', role: 'cancel' },
-        {
-          text: 'Ok',
-          handler: () => {
-            this.calendar.deleteEvent(evt.title, evt.location, evt.notes, new Date(evt.startDate.replace(/\s/, 'T')), new Date(evt.endDate.replace(/\s/, 'T'))).then(
-              msg => {
-                this.loadEventThisMonth();
-                this.selectDate(new Date(evt.startDate.replace(/\s/, 'T')).getDate());
-              },
-              err => { console.log(err);}
-            )
-          }
-        }
-      ]
-    });
-    alert.present();
+  
+  deleteEvent(event: EventT){
+    this.eventList.splice(this.eventList.lastIndexOf(event));
   }
 }

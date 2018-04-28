@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { Calendar } from '@ionic-native/calendar';
+import { Storage } from '@ionic/storage';
+import { EventT } from '../../models/event';
 
 @IonicPage()
 @Component({
@@ -9,23 +10,33 @@ import { Calendar } from '@ionic-native/calendar';
 })
 export class AddEventPage {
 
-  event = { title: "", location: "", message: "", startDate: "", endDate: "" };
+  event: EventT;
+  eventList: EventT[];
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public calendar: Calendar) {
-
+    public storage: Storage
+    ) {
+      this.event = navParams.get('event');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddEventPage');
+    this.storage.get('eventList').then(
+      scc => {
+        this.eventList = scc;
+      },
+      err => { console.log(err) }
+    );
   }
 
   save() {
-    this.calendar.createEvent(this.event.title, this.event.location, 
-                              this.event.message, new Date(this.event.startDate), 
-                              new Date(this.event.endDate)).then(
+    if(this.navParams.get('info') === 1) this.eventList.splice( this.eventList.lastIndexOf(this.navParams.get('event')));
+    this.eventList = this.eventList || [];
+    this.eventList.push(this.event);
+    console.log(this.eventList);
+    this.storage.set('eventList',this.eventList).then(
       msg => {
         let alert = this.alertCtrl.create({
           title: 'Sucesso!',

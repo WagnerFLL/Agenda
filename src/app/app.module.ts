@@ -12,6 +12,7 @@ import { CalendarPage } from '../pages/calendar/calendar';
 import { GradesPage } from '../pages/grades/grades';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SubjectsPage } from '../pages/subjects/subjects';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,11 @@ import { SubjectsPage } from '../pages/subjects/subjects';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: 'Agenda',
+      storeName: 'data',
+      driverOrder: ['indexeddb']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
