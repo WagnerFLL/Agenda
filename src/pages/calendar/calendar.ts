@@ -33,7 +33,6 @@ export class CalendarPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CalendarPage');
     this.getDaysOfMonth();
   }
 
@@ -41,7 +40,6 @@ export class CalendarPage {
     this.storage.get("eventList").then(
       success => {
         this.eventList = success;
-        console.log(this.eventList);
       },
       err => {
           let alert = this.alertCtrl.create({
@@ -59,7 +57,6 @@ export class CalendarPage {
     this.daysInNextMonth = new Array();
     this.currentMonth = this.monthNames[this.date.getMonth()];
     this.currentYear = this.date.getFullYear();
-    console.log(this.currentYear + " " + this.currentMonth);
     
     if(this.date.getMonth() === new Date().getMonth()) {
       this.currentDate = new Date().getDate();
@@ -73,7 +70,6 @@ export class CalendarPage {
     for(i = prevNumOfDays-(firstDayThisMonth-1); i <= prevNumOfDays; i++) {
       this.daysInLastMonth.push(i);
     }
-    console.log(this.daysInLastMonth);
     var thisNumOfDays = new Date(this.date.getFullYear(), this.date.getMonth()+1, 0).getDate();
     for (i = 0; i < thisNumOfDays; i++) {
       this.daysInThisMonth.push(i+1);
@@ -111,6 +107,9 @@ export class CalendarPage {
   }
   
   deleteEvent(event: EventT){
-    this.eventList.splice(this.eventList.lastIndexOf(event));
+    console.log("1 > "+this.eventList);
+    this.eventList.splice(this.eventList.lastIndexOf(event),1);
+    this.storage.set("eventList",this.eventList);
+    console.log("2 > "+this.eventList);
   }
 }

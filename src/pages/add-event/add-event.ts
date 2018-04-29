@@ -32,7 +32,7 @@ export class AddEventPage {
   }
 
   save() {
-    if(this.navParams.get('info') === 1) this.eventList.splice( this.eventList.lastIndexOf(this.navParams.get('event')));
+    if(this.navParams.get('info') === 1) this.eventList.splice( this.eventList.lastIndexOf(this.navParams.get('event')),1);
     this.eventList = this.eventList || [];
     this.eventList.push(this.event);
     console.log(this.eventList);
