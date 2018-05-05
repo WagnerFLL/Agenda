@@ -42,19 +42,19 @@
         </ion-col>
         <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month">{{nextDay}}</ion-col>
       </ion-row>
+      <br>
     </ion-grid>
   </div>
-  
+
   <ion-list>
-    
     <ion-list-header>
-      Eventos
+      <h1>Eventos</h1>
     </ion-list-header>
     <ion-item-sliding *ngFor='let event of eventList'>
       <ion-item>
         <h2>{{event.title}}</h2>
         <h3>{{event.message}}</h3>
-        <p item-end>{{event.startDate}}</p>
+        <p item-end>{{event.starDay}}/{{event.starMonth}}/{{event.starYear}}</p>
       </ion-item>
 
       <ion-item-options side="left">

@@ -13,6 +13,7 @@ import { GradesPage } from '../pages/grades/grades';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SubjectsPage } from '../pages/subjects/subjects';
 import { IonicStorageModule } from '@ionic/storage';
+import { DatePicker } from '@ionic-native/date-picker';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     Calendar,
+    DatePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

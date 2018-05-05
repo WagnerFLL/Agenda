@@ -44,11 +44,26 @@ export class CalendarPage {
       err => {
           let alert = this.alertCtrl.create({
           title: 'Falha!',
-          subTitle: 'Enfrentamos um problema aqui. Entre em contato com o desenvolvedor e informe o problema. '+err,
+          subTitle: 'Enfrentamos um problema aqui. Entre em contato com o desenvolvedor e'+
+                    ' informe o problema. '+err,
           buttons: ['OK']
         }).present();
       }
     );
+    this.sort();
+  }
+
+  sort() {
+    var length = this.eventList.length;
+    for (var i = 0; i < length; i++) { 
+      for (var j = 0; j < (length - i - 1); j++) { 
+        if(this.eventList[j].timeC > this.eventList[j+1].timeC) {
+          var tmp = this.eventList[j];  
+          this.eventList[j] = this.eventList[j+1];
+          this.eventList[j+1] = tmp; 
+        }
+      }        
+    }
   }
 
   getDaysOfMonth() {
@@ -99,11 +114,12 @@ export class CalendarPage {
   }
 
   addEvent() {
-    this.navCtrl.push(AddEventPage, {info: 0, event: {title: null, message: "", startDate: null, endDate: null, location: null}});
+    this.navCtrl.push(AddEventPage, {info: 0, event: {title: null, message: "", startDate: new Date(), endDate: null, location: null, timeC: 0}});
   }
 
   editEvent(event: EventT){
-    this.navCtrl.push(AddEventPage,{info: 1, event: event});
+    console.log("Calendar edit n ="+this.eventList.lastIndexOf(event));
+    this.navCtrl.push(AddEventPage,{info: 1, event: event, position:this.eventList.lastIndexOf(event)});
   }
   
   deleteEvent(event: EventT){

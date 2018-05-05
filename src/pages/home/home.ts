@@ -8,11 +8,6 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public storage: Storage) {
-
-  }
-
-  ionViewDidLoad(){
-    this.storage.clear();
-  }
+  constructor(public navCtrl: NavController, public storage: Storage) {}
+  // ionViewDidLoad(){}
 }

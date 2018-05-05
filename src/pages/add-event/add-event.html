@@ -22,13 +22,13 @@
         <ion-label floating>Detalhes</ion-label>
         <ion-input type="text" [(ngModel)]="event.message" name="event.message"></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item (click)="setStartDate()">
         <ion-label floating>Data de início</ion-label>
-        <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="event.startDate" name="event.startDate"></ion-datetime>
+        <ion-datetime disabled='true' displayFormat="DD MMM YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="date" name="event.startDate"></ion-datetime>
       </ion-item>
-      <ion-item>
+      <ion-item (click)="setEndDate()">
         <ion-label floating>Data final</ion-label>
-        <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="event.endDate" name="event.endDate"></ion-datetime>
+        <ion-datetime disabled='true' displayFormat="DD MMM YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="dateF" name="event.endDate"></ion-datetime>
       </ion-item>
       <ion-item>
         <button ion-button type="submit" full round>Salvar</button>
