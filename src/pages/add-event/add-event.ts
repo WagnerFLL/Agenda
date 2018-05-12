@@ -71,8 +71,7 @@ export class AddEventPage {
     this.eventList.push(this.event);
     console.log(this.eventList);
     
-    this.storage.set('eventList',this.eventList).then(
-      
+    this.storage.set('eventList',this.eventList).then( 
       msg => {
         let alert = this.alertCtrl.create({
           title: 'Sucesso!',

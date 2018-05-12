@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>AddSubject</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="save()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Título</ion-label>
+        <ion-input type="text" [(ngModel)]="subject.name" name="subject.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Código</ion-label>
+        <ion-input type="text" [(ngModel)]="subject.code" name="subject.code"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Professor</ion-label>
+        <ion-input type="text" [(ngModel)]="subject.professor" name="subject.professor"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Período</ion-label>
+        <ion-input type="text" [(ngModel)]="subject.period" name="subject.period"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cor: </ion-label>
+        <ion-select [(ngModel)]="subject.color" [ngModelOptions]='{standalone:true}'>
+          <ion-option *ngFor="let c of colors" value="{{c.value}}">{{c.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <button ion-button type="submit" full round>Salvar</button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

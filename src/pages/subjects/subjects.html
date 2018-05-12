@@ -8,8 +8,26 @@
   </ion-navbar>
 
 </ion-header>
-
+ 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item *ngFor="let subject of subjects" >
+      <ion-card color={{subject.color}} (press)="deleteSubject(subject)">
+        <ion-card-header class="title" >{{subject.name}} - {{subject.code}}</ion-card-header>
+        <label >Professor: {{subject.professor}}</label>
+        <br>
+        <label ion-end>Período: {{subject.period}}</label>
+        <br>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+  <ion-fab bottom right>
+    <button ion-fab><ion-icon name="md-arrow-dropleft" color="light"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab color="secondary" (click)="addSubject()"><ion-icon name="md-add" color="light"></ion-icon></button>
+      <button ion-fab color="secondary"><ion-icon name="md-time" color="light"></ion-icon></button>
+      <button ion-fab color="secondary"><ion-icon name="md-school" color="light"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

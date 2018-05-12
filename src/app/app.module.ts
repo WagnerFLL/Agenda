@@ -14,6 +14,8 @@ import { SchedulePage } from '../pages/schedule/schedule';
 import { SubjectsPage } from '../pages/subjects/subjects';
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePicker } from '@ionic-native/date-picker';
+import { EditSchedulePage } from '../pages/edit-schedule/edit-schedule';
+import { AddSubjectPage } from '../pages/add-subject/add-subject';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import { DatePicker } from '@ionic-native/date-picker';
     HomePage,
     ListPage,
     AddEventPage,
+    EditSchedulePage,
     CalendarPage,
     GradesPage,
     SchedulePage,
-    SubjectsPage
+    SubjectsPage,
+    AddSubjectPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,9 @@ import { DatePicker } from '@ionic-native/date-picker';
     CalendarPage,
     GradesPage,
     SchedulePage,
-    SubjectsPage
+    SubjectsPage,
+    EditSchedulePage,
+    AddSubjectPage
   ],
   providers: [
     StatusBar,

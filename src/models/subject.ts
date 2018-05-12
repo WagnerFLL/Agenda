@@ -5,6 +5,10 @@ export class Subject{
     public final?: number;
     public nota?: number;
     public name: string;
+    public code?: string;
+    public professor?: string;
+    public period?: string;
+    public color?: string;
 
     public isApproved():boolean{
         if(!this.ab1 || !this.ab2) return false;

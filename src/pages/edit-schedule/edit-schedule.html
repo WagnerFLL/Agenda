@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>EditSchedulePage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  {{hourStart}}
+  {{hourEnd}}
+  {{subject}}
+  <ion-item>
+    <ion-label>Gaming</ion-label>
+    <ion-select [(ngModel)]="subject">
+      <ion-option *ngFor="let a of subjects" value="{{a}}">{{a}}</ion-option>
+      <!-- <ion-option value="n64">Nintendo64</ion-option>
+      <ion-option value="ps">PlayStation</ion-option>
+      <ion-option value="genesis">Sega Genesis</ion-option>
+      <ion-option value="saturn">Sega Saturn</ion-option>
+      <ion-option value="snes">SNES</ion-option> -->
+    </ion-select>
+  </ion-item>
+</ion-content>
