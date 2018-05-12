@@ -37,6 +37,9 @@
           <h2 *ngIf="!h.subject" item-end>
             Horário vago
           </h2>
+          <h2 *ngIf="h.subject != null" item-end>
+            {{h.subject.name}}
+          </h2>
         </ion-item>
         <ion-item-options side="left">
           <button ion-button (click)="editSchedule(h.h,seg)" ><ion-icon name="create"></ion-icon></button>
@@ -50,6 +53,9 @@
           <h2>{{h.start}} - {{h.end}} </h2>
           <h2 *ngIf="!h.subject" item-end>
             Horário vago
+          </h2>
+          <h2 *ngIf="h.subject != null" item-end>
+            {{h.subject.name}}
           </h2>
         </ion-item>
         <ion-item-options side="left">
@@ -65,6 +71,9 @@
           <h2 *ngIf="!h.subject" item-end>
             Horário vago
           </h2>
+          <h2 *ngIf="h.subject != null" item-end>
+            {{h.subject.name}}
+          </h2>
         </ion-item>
         <ion-item-options side="left">
           <button ion-button (click)="editSchedule(h.h,qua)" ><ion-icon name="create"></ion-icon></button>
@@ -79,6 +88,9 @@
           <h2 *ngIf="!h.subject" item-end>
             Horário vago
           </h2>
+          <h2 *ngIf="h.subject != null" item-end>
+            {{h.subject.name}}
+          </h2>
         </ion-item>
         <ion-item-options side="left">
           <button ion-button (click)="editSchedule(h.h,qui)" ><ion-icon name="create"></ion-icon></button>
@@ -92,6 +104,9 @@
           <h2>{{h.start}} - {{h.end}} </h2>
           <h2 *ngIf="!h.subject" item-end>
             Horário vago
+          </h2>
+          <h2 *ngIf="h.subject != null" item-end>
+            {{h.subject.name}}
           </h2>
         </ion-item>
         <ion-item-options side="left">

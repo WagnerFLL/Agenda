@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Day } from '../../models/day';
 import { Subject } from '../../models/subject';
@@ -18,12 +18,14 @@ export class EditSchedulePage {
   public hourStart: string;
   public hourEnd: string;
   public subject: Subject;
-
-  subjects = ['mat','pt','en','hist','geo'];
+  public subjectName = '';
+  public subjects: Subject[];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public storage: Storage) {
+              public storage: Storage,
+              public alertCrtl: AlertController) {
+
     this.hourEdit = navParams.get('h');
     this.nameDay = navParams.get('day');
   }
@@ -34,16 +36,34 @@ export class EditSchedulePage {
         this.dayEdit = scc;
         this.hourStart = this.dayEdit.schedule[this.hourEdit].start;
         this.hourEnd =  this.dayEdit.schedule[this.hourEdit].end;
-        this.subject =  this.dayEdit.schedule[this.hourEdit].subject;
+        this.subject =  new Subject();
       },
       err => console.log(err)
     );
-    
+    this.storage.get('subjects').then(
+      scc => {
+        if(!scc){
+          this.alertCrtl.create({title: 'Ops!',
+                                subTitle:'Parece que você ainda não adicionou nenhuma disciplina.'+
+                                              ' Volte aqui depois de adicionar alguma!',
+                                buttons: ['Ok']}).present();
+        }
+        else this.subjects = scc;
+      },
+      err => console.log(err)      
+    );
   }
 
-  modifySchedule(){
-    // this.dayEdit.
-    // this.dayEdit[]
+  save(){
+    if(!this.subjects) return;
+    this.subjects.forEach(
+      x => {
+        if(x.name.localeCompare(this.subjectName) === 0){
+          this.dayEdit.schedule[this.hourEdit].subject = x;
+        }
+      }
+    );
+    this.storage.set(this.nameDay,this.dayEdit);
   }
 
 }
