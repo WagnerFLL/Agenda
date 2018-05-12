@@ -1,0 +1,24 @@
+myapp {
+    #cabecalho-menu .item-inner {
+        border: none;
+    }
+    .cabecalho-menu {
+        background-image: url('data:image/png;base64,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');
+        height: 150px;
+        margin-bottom: 10px;
+
+        ion-avatar img {
+            width: 50px;
+            height: 50px;
+        }
+
+        h2 {
+            color: white;
+            font-weight: bold;
+        }
+
+        p {
+            color: #eee;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Day } from '../../models/day';
 
 /**
  * Generated class for the SchedulePage page.
@@ -15,10 +16,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SchedulePage {
 
+  seg: Day = {schedule:[{start:'7:30',end:'9:10',subject:null},
+                        {start:'9:20',end:'11:00',subject:null},
+                        {start:'11:10',end:'12:50',subject:null}]};
+  ter: Day = {schedule:[{start:'7:30',end:'9:10',subject:null},
+                        {start:'9:20',end:'11:00',subject:null},
+                        {start:'11:10',end:'12:50',subject:null}]};
+  qua: Day = {schedule:[{start:'7:30',end:'9:10',subject:null},
+                        {start:'9:20',end:'11:00',subject:null},
+                        {start:'11:10',end:'12:50',subject:null}]};
+  qui: Day = {schedule:[{start:'7:30',end:'9:10',subject:null},
+                        {start:'9:20',end:'11:00',subject:null},
+                        {start:'11:10',end:'12:50',subject:null}]};
+  sex: Day = {schedule:[{start:'7:30',end:'9:10',subject:null},
+                        {start:'9:20',end:'11:00',subject:null},
+                        {start:'11:10',end:'12:50',subject:null}]};
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     console.log('ionViewDidLoad SchedulePage');
   }
 

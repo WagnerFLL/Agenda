@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { AddEventPage } from '../add-event/add-event';
 import { Calendar } from '@ionic-native/calendar';
 import { Storage } from '@ionic/storage';
@@ -28,7 +28,8 @@ export class CalendarPage {
     public navParams: NavParams,
     public calendar: Calendar,
     public storage: Storage,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public modal: ModalController) {
     this.date = new Date();
   }
 
@@ -50,7 +51,13 @@ export class CalendarPage {
         }).present();
       }
     );
-    this.sort();
+    if(this.eventList){
+      try{
+        this.sort();
+      }catch(e){
+        console.log(e);
+      }
+    } 
   }
 
   sort() {
@@ -114,18 +121,15 @@ export class CalendarPage {
   }
 
   addEvent() {
-    this.navCtrl.push(AddEventPage, {info: 0, event: {title: null, message: "", startDate: new Date(), endDate: null, location: null, timeC: 0}});
+    this.modal.create(AddEventPage,{info: 0, event: {title: null, message: "", startDate: new Date(), endDate: null, location: null, timeC: 0}}).present();
   }
 
   editEvent(event: EventT){
-    console.log("Calendar edit n ="+this.eventList.lastIndexOf(event));
-    this.navCtrl.push(AddEventPage,{info: 1, event: event, position:this.eventList.lastIndexOf(event)});
+    this.modal.create(AddEventPage,{info: 1, event: event, position: this.eventList.lastIndexOf(event)}).present();
   }
   
   deleteEvent(event: EventT){
-    console.log("1 > "+this.eventList);
     this.eventList.splice(this.eventList.lastIndexOf(event),1);
     this.storage.set("eventList",this.eventList);
-    console.log("2 > "+this.eventList);
   }
 }

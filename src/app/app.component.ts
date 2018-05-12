@@ -11,6 +11,7 @@ import { SubjectsPage } from '../pages/subjects/subjects';
 import { GradesPage } from '../pages/grades/grades';
 
 @Component({
+  selector: 'myapp',
   templateUrl: 'app.html'
 })
 export class MyApp {
@@ -18,18 +19,18 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Calendário', component: CalendarPage },
-      { title: 'Horário', component: SchedulePage },
-      { title: 'Disciplinas', component: SubjectsPage },
-      { title: 'Notas', component: GradesPage }
+      { title: 'Home', component: HomePage, icon:"ios-home" },
+      { title: 'Calendário', component: CalendarPage, icon:"md-calendar"  },
+      { title: 'Horário', component: SchedulePage, icon:"md-stopwatch"  },
+      { title: 'Disciplinas', component: SubjectsPage, icon:"md-bookmarks"  },
+      { title: 'Notas', component: GradesPage, icon:"md-school"  }
     ];
 
   }
