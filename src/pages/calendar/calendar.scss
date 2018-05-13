@@ -20,25 +20,31 @@ page-calendar {
     }
     .currentDate {
         font-weight: bold;
-        background-color: red;
+        background-color: rgb(247, 166, 17);
         color: white;
         border-radius: 30px;
     }
     .calendar-header {
-        background-color: #1a732d;
-        color: #FFFFFF;
+        background-color: #1165e2;
+        color: #FFFFFF; 
     }
     .event-bullet {
         margin: 2px auto;
         height: 5px;
         width: 5px;
-        background-color: green;
+        background-color: rgb(41, 22, 212);
         border-radius: 30px;
+    }
+    h1{
+        color: #1165e2;
+    }
+    h2{
+        color: #1165e2;
     }
     .selected-date {
         width: 20px;
         height: 2px;
-        background-color: blue;
+        background-color: rgb(177, 177, 218);
     }
     .unselected-date {
         border: none;
@@ -56,12 +62,13 @@ page-calendar {
         }
         .calendar-weekday {
         font-weight: bold;
-        border-bottom: solid 1px #1a732d;
-        background-color: #26ab56;
+        border-bottom: solid 1px #1165e2;
+        background-color: #ffffff;
+        color: #1165e2;
         }
         .calendar-date {
-        border-top: solid 1px #1a732d;
-        border-bottom: solid 1px #1a732d;
+        border-top: solid 1px #1165e2;
+        border-bottom: solid 1px #1165e2;
         }
     }
 }

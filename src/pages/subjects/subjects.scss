@@ -6,4 +6,19 @@ page-subjects {
         text-align: end;
         text-transform: uppercase;
     }
+    ion-card {
+        position: relative;
+        text-align: center;
+    }
+    .card {
+        padding-top: 1px;
+        padding-bottom: 1px;
+        box-shadow: 0 100px 18px rgba(0, 0, 0, 0.3); }
+    .card .item {
+        border-left: 0;
+        border-right: 0; }
+    .card .item:first-child {
+        border-top: 0; }
+    .card .item:last-child {
+        border-bottom: 0; }
 }   

@@ -3,18 +3,24 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title> Agenda </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h1>Olá! Meu caro.</h1>
-
+  <h3>Olá! Meu caro</h3>
+  <p>Parece que você se encontra em dificuldade com algumas disciplinas, clique e confira conteúdos que podem te ajudar!</p>
   <ion-list>
-    <p>Parece que você se encontra em dificuldade com algumas disciplinas, clique e confira conteúdos que podem te ajudar!</p>
+      <ion-list-header>
+        <h1>Disciplinas:</h1>
+      </ion-list-header>
     <ion-item (click)="showSite(a)" *ngFor="let a of faultSubjects">
-      {{a.name}}
+      <ion-card>
+        <h2 padding>{{a.name}}</h2>
+        <h3 padding>{{a.code}}</h3>
+      </ion-card>
     </ion-item>
+
   </ion-list>
   <button ion-button secondary menuToggle>Menu</button>
 </ion-content>

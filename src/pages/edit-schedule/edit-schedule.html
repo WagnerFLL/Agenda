@@ -1,18 +1,23 @@
 '<ion-header>
 
   <ion-navbar>
-    <ion-title>EditSchedulePage</ion-title>
+    <ion-title>Editar Horário</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  {{hourStart}}
-  {{hourEnd}}
-  {{subjectName}}
   <ion-item>
-    <ion-label>Disciplina: </ion-label>
+    {{subjectName}}
+  </ion-item>
+  <ion-item>
+    Das {{hourStart}} às 
+    {{hourEnd}}
+  </ion-item>
+  
+  <ion-item>
+    <ion-label> Disciplina: </ion-label>
     <ion-select [(ngModel)]="subjectName">
       <ion-option *ngFor="let s of subjects" value="{{s.name}}">{{s.name}}</ion-option>
     </ion-select>

@@ -1,15 +1,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Adicionar Notas</ion-title>
+    <ion-title>Nota</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <ion-label floating>AB1: {{subject.ab1}}</ion-label>
-    <ion-label floating>AB2: {{subject.ab2}}</ion-label>
-    <ion-label floating>Reavaliação: {{subject.reav}}</ion-label>
-    <ion-label floating>Final: {{subject.final}}</ion-label>
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6><span padding>AB1</span></ion-col>
+          <ion-col col-6><span padding item-right>{{subject.ab1}}</span></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6><span padding>AB2</span></ion-col>
+          <ion-col col-6><span padding item-right>{{subject.ab2}}</span></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6><span padding>Reav.</span></ion-col>
+          <ion-col col-6><span padding item-right>{{subject.reav}}</span></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6><span padding>Final</span></ion-col>
+          <ion-col col-6><span padding item-right>{{subject.final}}</span></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -15,7 +15,7 @@ export class HomePage {
   user: User;
   isLoggedIn: boolean;  
   subjects: Subject[];
-  public faultSubjects: {name:string,url:string}[];
+  public faultSubjects: Subject[];
 
   constructor(public navCtrl: NavController, 
               public storage: Storage,
@@ -34,7 +34,7 @@ export class HomePage {
         this.subjects.forEach(
           x => {
             if(x.ab1 < 7 || x.ab2 < 7){
-              this.faultSubjects.push({name:x.name,url:x.url});
+              this.faultSubjects.push(x);
             }
           }
         );

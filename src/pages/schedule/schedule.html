@@ -32,7 +32,7 @@
   <div [ngSwitch]="subjects">
     <ion-list *ngSwitchCase="'seg'">
       <ion-item-sliding *ngFor="let h of seg.schedule">
-        <ion-item>
+        <ion-item padding>
           <h2>{{h.start}} - {{h.end}} </h2>
           <h2 *ngIf="!h.subject" item-end>
             Horário vago
@@ -49,7 +49,7 @@
   
     <ion-list *ngSwitchCase="'ter'">
       <ion-item-sliding *ngFor="let h of ter.schedule">
-        <ion-item>
+        <ion-item padding>
           <h2>{{h.start}} - {{h.end}} </h2>
           <h2 *ngIf="!h.subject" item-end>
             Horário vago
@@ -66,7 +66,7 @@
 
     <ion-list *ngSwitchCase="'qua'">
       <ion-item-sliding *ngFor="let h of qua.schedule">
-        <ion-item>
+        <ion-item padding>
           <h2>{{h.start}} - {{h.end}} </h2>
           <h2 *ngIf="!h.subject" item-end>
             Horário vago
@@ -83,7 +83,7 @@
 
     <ion-list *ngSwitchCase="'qui'">
       <ion-item-sliding *ngFor="let h of qui.schedule">
-        <ion-item>
+        <ion-item padding>
           <h2>{{h.start}} - {{h.end}} </h2>
           <h2 *ngIf="!h.subject" item-end>
             Horário vago
@@ -100,7 +100,7 @@
 
     <ion-list *ngSwitchCase="'sex'">
       <ion-item-sliding *ngFor="let h of sex.schedule">
-        <ion-item>
+        <ion-item padding>
           <h2>{{h.start}} - {{h.end}} </h2>
           <h2 *ngIf="!h.subject" item-end>
             Horário vago
