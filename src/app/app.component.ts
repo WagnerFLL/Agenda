@@ -9,6 +9,7 @@ import { CalendarPage } from '../pages/calendar/calendar';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SubjectsPage } from '../pages/subjects/subjects';
 import { GradesPage } from '../pages/grades/grades';
+import { SieWebPage } from '../pages/sie-web/sie-web';
 
 @Component({
   selector: 'myapp',
@@ -24,21 +25,19 @@ export class MyApp {
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage, icon:"ios-home" },
       { title: 'Calendário', component: CalendarPage, icon:"md-calendar"  },
       { title: 'Horário', component: SchedulePage, icon:"md-stopwatch"  },
       { title: 'Disciplinas', component: SubjectsPage, icon:"md-bookmarks"  },
-      { title: 'Notas', component: GradesPage, icon:"md-school"  }
+      { title: 'Notas', component: GradesPage, icon:"md-school"  },
+      { title: 'SieWeb', component: SieWebPage, icon:"md-school"  }
     ];
 
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

@@ -17,6 +17,7 @@ import { DatePicker } from '@ionic-native/date-picker';
 import { EditSchedulePage } from '../pages/edit-schedule/edit-schedule';
 import { AddSubjectPage } from '../pages/add-subject/add-subject';
 import { AddGradePage } from '../pages/add-grade/add-grade';
+import { SieWebPage } from '../pages/sie-web/sie-web';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AddGradePage } from '../pages/add-grade/add-grade';
     SchedulePage,
     SubjectsPage,
     AddSubjectPage,
-    AddGradePage
+    AddGradePage,
+    SieWebPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { AddGradePage } from '../pages/add-grade/add-grade';
     SubjectsPage,
     EditSchedulePage,
     AddSubjectPage,
-    AddGradePage
+    AddGradePage,
+    SieWebPage
   ],
   providers: [
     StatusBar,

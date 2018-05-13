@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>SieWeb</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>CPF</ion-label>
+      <ion-input type="number" [(ngModel)]="cpf" name="cpf"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+      </ion-item>
+    <ion-item>
+      <ion-label>Conectar: </ion-label>
+      <button ion-button item-end (click)='login()'>Button</button>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label>Manter dados no dispositivo: </ion-label>
+      <ion-toggle disabled="{{isConected}}" [(ngModel)]="keepData" checked="false"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Salvar credenciais: </ion-label>
+      <ion-toggle disabled="{{isConected}}" [(ngModel)]="keepConect" checked="false"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Usar credenciais salvas: </ion-label>
+      <button ion-button item-end (click)='presentLoading()'> Login </button>
+    </ion-item>
+  </ion-list>
+</ion-content>
