@@ -8,13 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Olá! Meu caro.</h3>
+  <h1>Olá! Meu caro.</h1>
 
-  <p>
-    
-  </p>
   <ion-list>
-    <ion-item *ngFor="let a of faultSubjects">
+    <p>Parece que você se encontra em dificuldade com algumas disciplinas, clique e confira conteúdos que podem te ajudar!</p>
+    <ion-item (click)="showSite(a)" *ngFor="let a of faultSubjects">
       {{a.name}}
     </ion-item>
   </ion-list>

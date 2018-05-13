@@ -20,6 +20,7 @@ import { AddGradePage } from '../pages/add-grade/add-grade';
 import { SieWebPage } from '../pages/sie-web/sie-web';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { SettingsPage } from '../pages/settings/settings';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { SettingsPage } from '../pages/settings/settings';
     Calendar,
     DatePicker,
     GooglePlus,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

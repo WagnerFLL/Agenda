@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { User } from '../../models/user';
 import { Subject } from '../../models/subject';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-home',
@@ -19,7 +20,8 @@ export class HomePage {
   constructor(public navCtrl: NavController, 
               public storage: Storage,
               public google: GooglePlus,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public broswer: InAppBrowser) {
 
   }
 
@@ -32,13 +34,17 @@ export class HomePage {
         this.subjects.forEach(
           x => {
             if(x.ab1 < 7 || x.ab2 < 7){
-              this.faultSubjects.push({name:x.name,url:x.name});
+              this.faultSubjects.push({name:x.name,url:x.url});
             }
           }
         );
         console.log(this.faultSubjects);
       }
     );
+  }
+
+  showSite(data){
+    this.broswer.create(data.url).show();
   }
 
 }

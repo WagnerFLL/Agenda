@@ -9,4 +9,5 @@ export class Subject{
     public professor?: string;
     public period?: string;
     public color?: string;
+    public url?: string;
 }
