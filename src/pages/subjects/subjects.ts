@@ -17,9 +17,10 @@ export class SubjectsPage {
               public storage: Storage,
               public modal: ModalController,
               public alertCtrl: AlertController) {
+    this.subjects = [];
   }
 
-  ionViewWillEnter() { 
+  ionViewDidLoad() { 
     this.storage.get('subjects').then(
       scc => {
         if(scc) this.subjects = scc;

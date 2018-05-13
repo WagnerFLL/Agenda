@@ -92,10 +92,7 @@ export class SchedulePage {
   }
   
   storageSchedule(){
-    this.storage.set('created',true).then(
-      scc => this.alertCtrl.create({title: 'deu bom'}).present(),
-      err => this.alertCtrl.create({title: 'deu ruim'}).present()
-    );
+    this.storage.set('created',true);
     this.storage.set('qua',this.qua);
     this.storage.set('qui',this.qui);
     this.storage.set('sex',this.sex);

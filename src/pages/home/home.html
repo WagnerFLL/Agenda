@@ -13,6 +13,10 @@
   <p>
     
   </p>
-
+  <ion-list>
+    <ion-item *ngFor="let a of faultSubjects">
+      {{a.name}}
+    </ion-item>
+  </ion-list>
   <button ion-button secondary menuToggle>Menu</button>
 </ion-content>
