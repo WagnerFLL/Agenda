@@ -22,10 +22,8 @@ export class SubjectsPage {
   ionViewWillEnter() { 
     this.storage.get('subjects').then(
       scc => {
-        if(scc) this.subjects = scc
-        else{
-          this.storage.set('subjects',[]);
-        }
+        if(scc) this.subjects = scc;
+        else this.storage.set('subjects',[]);
       },
       err => console.log(err)
     );

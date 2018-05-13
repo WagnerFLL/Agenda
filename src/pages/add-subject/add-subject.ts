@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Subject } from '../../models/subject';
 import { Storage } from '@ionic/storage';
+import { SubjectsPage } from '../subjects/subjects';
 
 @IonicPage()
 @Component({

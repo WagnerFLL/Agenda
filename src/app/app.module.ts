@@ -16,6 +16,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { DatePicker } from '@ionic-native/date-picker';
 import { EditSchedulePage } from '../pages/edit-schedule/edit-schedule';
 import { AddSubjectPage } from '../pages/add-subject/add-subject';
+import { AddGradePage } from '../pages/add-grade/add-grade';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AddSubjectPage } from '../pages/add-subject/add-subject';
     GradesPage,
     SchedulePage,
     SubjectsPage,
-    AddSubjectPage
+    AddSubjectPage,
+    AddGradePage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { AddSubjectPage } from '../pages/add-subject/add-subject';
     SchedulePage,
     SubjectsPage,
     EditSchedulePage,
-    AddSubjectPage
+    AddSubjectPage,
+    AddGradePage
   ],
   providers: [
     StatusBar,

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, Nav } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { EventT } from '../../models/event';
 import { DatePicker } from '@ionic-native/date-picker';
+import { CalendarPage } from '../calendar/calendar';
 
 @IonicPage()
 @Component({
@@ -69,19 +70,9 @@ export class AddEventPage {
     this.event.starYear = this.event.startDate.getFullYear().toString();
     this.sort();
     this.eventList.push(this.event);
-    console.log(this.eventList);
     
     this.storage.set('eventList',this.eventList).then( 
-      msg => {
-        let alert = this.alertCtrl.create({
-          title: 'Sucesso!',
-          subTitle: 'Evento salvo com sucesso.',
-          buttons: ['OK']
-        });
-        alert.present();
-        this.navCtrl.pop();
-      },
-      
+      msg => this.navCtrl.pop(),
       err => {
         let alert = this.alertCtrl.create({
           title: 'Falha!',
