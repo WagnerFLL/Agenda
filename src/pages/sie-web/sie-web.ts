@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { Subject } from '../../models/subject';
 
 
 @IonicPage()
@@ -15,6 +16,8 @@ export class SieWebPage {
   isConected: boolean = false;
   keepConected: boolean = false;
   keepData: boolean = false;
+  subjects: Subject[];
+  subjectsS: Subject[];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -23,8 +26,28 @@ export class SieWebPage {
               public loadingCtrl: LoadingController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SieWebPage');
+  ionViewWillEnter() { 
+    this.storage.get('subjects').then(
+      scc => {
+        if(scc) this.subjects = scc;
+        else this.storage.set('subjects',[]);
+      },
+      err => console.log(err)
+    );
+  }
+
+  ionViewDidLoad() { 
+    this.storage.get('subjectsSave').then(
+      scc => {
+        if(!scc){
+          console.log("Vazio o subjectsSave");
+          return;
+        }
+        console.log("Subjects save:");
+        console.log(scc);
+        this.subjectsS = scc;
+      }
+    );
   }
 
   login(){
@@ -40,6 +63,9 @@ export class SieWebPage {
 
     if(this.cpf.toString().localeCompare('12884123474') === 0){
       this.presentLoading();
+    }
+    else{
+      this.alertCrtl.create({title:'Ops!',subTitle:'Por favor, confira sua senha!'}).present();
     }
 
   }
@@ -87,6 +113,16 @@ export class SieWebPage {
     });
     loader.present();
     this.isConected = true;
+    this.saveAllSubjects();
+  }
+
+  saveAllSubjects(){
+    console.log("Pré concat");
+    if(this.subjects){
+      this.subjects = this.subjects.concat(this.subjectsS);
+      console.log(this.subjects);
+    }
+    this.storage.set('subjects',this.subjects);
   }
 
 }

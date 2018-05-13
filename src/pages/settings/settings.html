@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Apagar todos os dados</ion-label>
+      <button ion-button item-end (click)="deleteAll()"> <ion-icon md="md-warning"></ion-icon></button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Salvar dados na nuvem</ion-label>
+      <button ion-button item-end (click)="saveData()"><ion-icon  md="md-cloud-done"></ion-icon></button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Login Google</ion-label>
+      <button ion-button item-end (click)="loginGoogle()"><ion-icon name="md-log-in"></ion-icon></button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Logout Google</ion-label>
+      <button ion-button item-end (click)="logoutGoogle()"><ion-icon name="md-log-out"></ion-icon></button>
+    </ion-item>
+    
+  </ion-list>
+</ion-content>

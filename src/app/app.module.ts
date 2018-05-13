@@ -18,6 +18,8 @@ import { EditSchedulePage } from '../pages/edit-schedule/edit-schedule';
 import { AddSubjectPage } from '../pages/add-subject/add-subject';
 import { AddGradePage } from '../pages/add-grade/add-grade';
 import { SieWebPage } from '../pages/sie-web/sie-web';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { SettingsPage } from '../pages/settings/settings';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { SieWebPage } from '../pages/sie-web/sie-web';
     SubjectsPage,
     AddSubjectPage,
     AddGradePage,
-    SieWebPage
+    SieWebPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -56,13 +59,15 @@ import { SieWebPage } from '../pages/sie-web/sie-web';
     EditSchedulePage,
     AddSubjectPage,
     AddGradePage,
-    SieWebPage
+    SieWebPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Calendar,
     DatePicker,
+    GooglePlus,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

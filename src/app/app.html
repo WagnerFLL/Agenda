@@ -1,18 +1,29 @@
 <ion-menu [content]="content">
   <ion-content>
+
     <ion-item id="cabecalho-menu" class="cabecalho-menu" >
       <div>
         <ion-avatar item-start>
-            <img src="assets/imgs/av.png">
+            <img item-end src="{{user.imageUrl}}">
         </ion-avatar>
       </div>
-      <h2>Nome</h2>
-      <p>email</p>
+      <div>
+        <h2>{{user.displayName}}</h2>
+        <p>{{user.email}}</p>
+      </div>
     </ion-item>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         <ion-icon [name]="p.icon" item-left color="secondary"></ion-icon>
         {{p.title}}
+      </button>
+      <button *ngIf="isLoggedIn" ion-item (click)="logoutG()">
+        <ion-icon name="md-log-out" item-left color="secondary"></ion-icon>
+        Logout
+      </button>
+      <button *ngIf="!isLoggedIn" ion-item (click)="loginG()">
+        <ion-icon name="md-log-in" item-left color="secondary"></ion-icon>
+        Login
       </button>
     </ion-list>
   </ion-content>
