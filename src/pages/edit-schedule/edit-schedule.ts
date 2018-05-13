@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { Storage } from '@ionic/storage';
 import { Day } from '../../models/day';
 import { Subject } from '../../models/subject';
-import { SchedulePage } from '../schedule/schedule';
 
 @IonicPage()
 @Component({

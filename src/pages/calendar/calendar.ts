@@ -43,7 +43,7 @@ export class CalendarPage {
         this.eventList = success;
       },
       err => {
-          let alert = this.alertCtrl.create({
+        this.alertCtrl.create({
           title: 'Falha!',
           subTitle: 'Enfrentamos um problema aqui. Entre em contato com o desenvolvedor e'+
                     ' informe o problema. '+err,
@@ -98,7 +98,6 @@ export class CalendarPage {
     }
     
     var lastDayThisMonth = new Date(this.date.getFullYear(), this.date.getMonth()+1, 0).getDay();
-    var nextNumOfDays = new Date(this.date.getFullYear(), this.date.getMonth()+2, 0).getDate();
     for (i = 0; i < (6-lastDayThisMonth); i++) {
       this.daysInNextMonth.push(i+1);
     }

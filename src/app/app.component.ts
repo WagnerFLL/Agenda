@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { CalendarPage } from '../pages/calendar/calendar';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SubjectsPage } from '../pages/subjects/subjects';
@@ -77,26 +76,11 @@ export class MyApp {
       { title: 'SieWeb', component: SieWebPage, icon:"md-cloud-download" },
       { title: 'Configurações', component: SettingsPage, icon:"ios-settings" }
     ];
-    storage.get('user').then(
-      scc => {
-        if(!scc){
-          this.user.displayName = "";
-          this.user.email = "";
-          this.user.familyName = "";
-          this.user.givenName = "";
-          this.user.userId = "";
-        }
-        else{
-          this.user = scc;
-          this.isLoggedIn = true;
-        }
-      }
-    );
     storage.set("subjectsSave",this.subjectsSave);
   }
 
   save(){
-    this.storage.set('user',this.user);
+    // this.storage.set('user',this.user);
   }
 
   initializeApp() {

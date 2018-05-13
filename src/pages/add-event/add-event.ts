@@ -1,9 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Nav } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { EventT } from '../../models/event';
 import { DatePicker } from '@ionic-native/date-picker';
-import { CalendarPage } from '../calendar/calendar';
 
 @IonicPage()
 @Component({
@@ -39,7 +38,7 @@ export class AddEventPage {
     this.datePicker.show({
       date: this.event.startDate,
       mode: 'date',
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_DARK
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
     })
     .then( date => this.date = date.toISOString() );
   }
